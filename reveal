@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 reveal() {
     isZsh(){
-        if command ps -ef | tr -s ' ' | \
-            perl -lane 'print $_ if $F[1] =~ /'$$'/' \
-            | command grep -q zsh; then
+        if command ps -p $$ | command grep -q zsh; then
             return 0
         else
             return 1
@@ -87,4 +85,5 @@ reveal() {
     unset -f isZsh
 
 }
-$(return 0 >/dev/null 2>&1) || reveal $@
+
+$(return 0 >/dev/null 2>&1) || reveal $@ 1>/dev/null 2>&1
