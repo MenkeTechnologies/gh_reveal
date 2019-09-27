@@ -54,7 +54,7 @@ reveal() {
    fi
 
   if no_git_dir_no_args $1; then
-    $open_cmd "https://github.com/$name?tab=repositories"
+    $open_cmd "https://github.com/$name?tab=repositories" >/dev/null 2>&1
     unset -f find_open_command_from_Operating_System
     unset -f no_git_dir_no_args
     unset -f no_git_dir_yes_args
