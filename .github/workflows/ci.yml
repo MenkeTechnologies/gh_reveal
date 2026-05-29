@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: gh_reveal
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y zsh bash curl git shellcheck
+
+      - name: Set up zunit + revolver
+        run: |
+          set -euo pipefail
+          mkdir -p .bin
+          curl -fsSL -o .bin/revolver https://raw.githubusercontent.com/molovo/revolver/master/revolver
+          chmod u+x .bin/revolver
+          git clone --depth 1 https://github.com/MenkeTechnologies/zunit
+          (cd zunit && ./build.zsh)
+          echo "$PWD/zunit" >> "$GITHUB_PATH"
+          echo "$PWD/.bin" >> "$GITHUB_PATH"
+
+      - name: Set terminal env
+        run: |
+          echo "TERM=xterm" >> "$GITHUB_ENV"
+          echo "COLUMNS=120" >> "$GITHUB_ENV"
+          echo "LINES=40" >> "$GITHUB_ENV"
+
+      - name: shellcheck (errors only — upstream code carries stylistic info notes)
+        run: |
+          set -euo pipefail
+          cd gh_reveal
+          shellcheck --severity=error --shell=bash bin/reveal install.sh uninstall.sh credential.sh helpers.sh
+
+      - name: Run zunit tests
+        run: |
+          set -euo pipefail
+          cd gh_reveal
+          chmod +x bin/reveal
+          zunit --verbose tests/*.zsh
