@@ -1,6 +1,33 @@
-# reveal_brew
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
-in terminal, quickly open the git project in default browser.
+```
+  ____ _   _   ____  _______     _______    _    _
+ / ___| | | | |  _ \| ____\ \   / / ____|  / \  | |
+| |  _| |_| | | |_) |  _|  \ \ / /|  _|   / _ \ | |
+| |_| |  _  | |  _ <| |___  \ V / | |___ / ___ \| |___
+ \____|_| |_| |_| \_\_____|  \_/  |_____/_/   \_\_____|
+```
+
+<p align="center">
+<code>// CWD → git remote → default browser. ONE COMMAND. ZERO MOUSE.</code>
+</p>
+
+---
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-ff2a6d.svg?style=flat-square)](#contributors)
+[![Tag](https://img.shields.io/badge/tag-v0.1.0-39ff14.svg)](https://github.com/MenkeTechnologies/gh_reveal/tags)
+[![Shell](https://img.shields.io/badge/shell-zsh%20%7C%20bash-05d9e8.svg)](#install-for-zinit)
+[![Loader](https://img.shields.io/badge/loader-zinit%20%7C%20omz%20%7C%20brew-d300c5.svg)](#install-with-homebrew-macintosh-computers)
+
+### `[SIGNAL // OPEN THE PROJECT IN THE BROWSER WITHOUT LEAVING THE TERMINAL]`
+
+> *// jacking your shell into the GitHub / GitLab tab without `cmd-tab`, `cmd-t`, `cmd-l`, paste //*
+
+---
+
+## `> SYSTEM OVERVIEW`
+
+`reveal` is a tiny shell util: `cd` into any git project, type `reveal`, your default browser opens the project page. Reads `git remote -v` and pipes every matching URL to `open` (macOS) / `xdg-open` (Linux). Filter by remote name (`reveal origin`, `reveal gitlab`) or hit them all at once.
+
+Built on top of `md-command-line/gh_reveal`; MenkeTechnologies' fork ships as a zinit/omz plugin for zpwr-tier setups.
 
 ## Install with Homebrew (macintosh computers):
 ```
