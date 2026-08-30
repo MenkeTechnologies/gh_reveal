@@ -13,7 +13,7 @@
 ---
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-ff2a6d.svg?style=flat-square)](#contributors)
-[![Tag](https://img.shields.io/badge/tag-v0.1.0-39ff14.svg)](https://github.com/MenkeTechnologies/gh_reveal/tags)
+[![Tag](https://img.shields.io/github/v/tag/MenkeTechnologies/gh_reveal?sort=semver&label=tag&color=39ff14)](https://github.com/MenkeTechnologies/gh_reveal/tags)
 [![Shell](https://img.shields.io/badge/shell-zsh%20%7C%20bash-05d9e8.svg)](#install-for-zinit)
 [![Loader](https://img.shields.io/badge/loader-zinit%20%7C%20omz%20%7C%20brew-d300c5.svg)](#install-with-homebrew-macintosh-computers)
 
