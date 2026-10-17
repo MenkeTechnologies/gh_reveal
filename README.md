@@ -25,7 +25,7 @@
 
 ## `> SYSTEM OVERVIEW`
 
-`reveal` is a tiny shell util: `cd` into any git project, type `reveal`, your default browser opens the project page. Reads `git remote -v` and pipes every matching URL to `open` (macOS) / `xdg-open` (Linux). Filter by remote name (`reveal origin`, `reveal gitlab`) or hit them all at once.
+`reveal` is a tiny shell util: `cd` into any git project, type `reveal`, your default browser opens the project page. Reads `git remote -v` and pipes every matching URL to the platform opener: `open` (macOS), `nohup xdg-open` (Linux), `cmd.exe /c start` (WSL), `cygstart` (Cygwin), `start` (MSYS). Filter by remote name (`reveal origin`, `reveal gitlab`) or hit them all at once. Heroku remotes open the Heroku dashboard and app URLs. Outside a git directory, `reveal` with no arguments opens `https://github.com/<name>?tab=repositories`, where `<name>` is `` or else `git config user.name`; `reveal <dir>...` outside a git directory reveals each given directory.
 
 Built on top of `md-command-line/gh_reveal`; MenkeTechnologies' fork ships as a zinit/omz plugin for zpwr-tier setups.
 
